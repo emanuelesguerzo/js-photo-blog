@@ -48,6 +48,7 @@ header {
     padding: 15px;
     background-color: #ffffff;
     position: relative;
+    box-shadow: 10px 10px 20px rgba(0, 0, 0, 0.7);
 }
 
 /* Card Deco */
@@ -97,4 +98,42 @@ header {
     background-color: rgba(0, 0, 0, 0.5);
     padding: 20px;
     text-align: center;
+}
+
+/* ////////////// */
+/* MEDIA QUEREYS */
+/* //////////// */
+/* Tablet */
+@media (max-width: 768px) {
+    .row {
+        width: 80%;
+        gap: 20px;
+    }
+
+    .col {
+        width: calc((100% - 20px) / 2); 
+    }
+}
+
+/* Mobile */
+@media (max-width: 480px) {
+    .row {
+        width: 70%;
+    }
+
+    .col {
+        width: 100%;
+    }
+
+    h1 {
+        font-size: 3.5rem;
+    }
+
+    .error {
+        font-size: 1rem;
+    }
+
+    .loading {
+        font-size: 2rem;
+    }
 }
