@@ -1,6 +1,7 @@
 const $one = document.querySelector.bind(document);
 
 const rowElem = $one(".row")
+const loadingElem = $one(".loading");
 
 let images = [];
 
@@ -20,7 +21,10 @@ const printImages = () => {
     `
     })
     rowElem.innerHTML = result;
+    loadingElem.style.display = "none"
 }
+
+loadingElem.style.display = "block";
 
 axios.get("https://jsonplaceholder.typicode.com/photos?_limit=6")
     .then(resp => {
@@ -28,5 +32,7 @@ axios.get("https://jsonplaceholder.typicode.com/photos?_limit=6")
         printImages();
     })
     .catch(error => {
-        console.error("Errore durante il caricamento delle immagini:", error);
+        console.error("Error:", error);
+        loadingElem.style.display = "none";
+        rowElem.innerHTML = `<p class="error">Error during loading. Please try again later.</p>`;
     });

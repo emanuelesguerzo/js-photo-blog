@@ -46,7 +46,7 @@ header {
 .col {
     width: calc((100% - 60px) / 3);
     padding: 15px;
-    background-color: white;
+    background-color: #ffffff;
     position: relative;
 }
 
@@ -76,4 +76,25 @@ header {
     text-transform: capitalize;
     padding: 15px 0;
     line-height: 1.4;
+}
+
+/* Loading */
+.loading {
+    text-align: center;
+    font-family: "Edu TAS Beginner", serif;
+    font-size: 3rem;
+    color: #ffffff;
+    background-color: rgba(0, 0, 0, 0.5);
+    padding: 20px 0;
+    display: none;
+}
+
+/* Error */
+.error {
+    font-size: 2rem;
+    color: #ffffff;
+    font-family: "Sometype Mono", serif;
+    background-color: rgba(0, 0, 0, 0.5);
+    padding: 20px;
+    text-align: center;
 }
