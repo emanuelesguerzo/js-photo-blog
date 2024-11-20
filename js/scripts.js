@@ -12,13 +12,14 @@ const printImages = () => {
         result += `
         <div class="col">
             <div class="card-image">
-                <img class="main-img" src="${curImage.url}" alt="${curImage.title}">
+                <img class="main-img" data-post-id="${curImage.id}" src="${curImage.url}" alt="${curImage.title}">
             </div>
             <p class="card-text">
                 ${curImage.title}
             </p>     
         </div>
     `
+    console.log(curImage.id)
     })
     rowElem.innerHTML = result;
     loadingElem.style.display = "none"
