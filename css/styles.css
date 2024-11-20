@@ -143,8 +143,9 @@ header {
 
 /* Overlay Image */
 .overlay-image {
-    height: 600px;
-    width: 600px;
+    height: 500px;
+    width: 500px;
+    object-fit: cover;
 }
 
 .overlay-image img {

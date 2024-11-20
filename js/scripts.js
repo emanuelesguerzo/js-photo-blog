@@ -4,7 +4,7 @@ const rowElem = $one(".row")
 const loadingElem = $one(".loading");
 const closeBtn = $one(".close-btn");
 const overlayElem = $one(".overlay");
-let overlayImgElem = $one(".overlay-image");
+const overlayImgElem = $one(".overlay-image");
 
 let images = [];
 
