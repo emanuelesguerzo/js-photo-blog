@@ -41,6 +41,14 @@ closeBtn.addEventListener("click", () => {
     overlayElem.classList.add("hidden");
 })
 
+overlayElem.addEventListener("click", (event) => {
+    if (event.target === overlayImgElem) {
+        event.stopPropagation(); 
+    } else {
+        overlayElem.classList.add("hidden"); 
+    }
+});
+
 loadingElem.style.display = "block";
 
 axios.get("https://jsonplaceholder.typicode.com/photos?_limit=6")
