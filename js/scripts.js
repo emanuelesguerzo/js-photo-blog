@@ -14,7 +14,7 @@ const printImages = () => {
     images.forEach((curImage) => {
         result += `
         <div class="col">
-            <img class="main-img card-image" data-post-id="${curImage.id}" src="${curImage.url}" alt="${curImage.title}">
+            <img class="main-img card-image" data-image-id="${curImage.id}" src="${curImage.url}" alt="${curImage.title}">
             <p class="card-text">
                 ${curImage.title}
             </p>     
@@ -49,9 +49,9 @@ axios.get("https://jsonplaceholder.typicode.com/photos?_limit=6")
         printImages();
     })
     .catch(error => {
-        console.error("Error:", error);
+        console.error("Errore:", error);
         loadingElem.style.display = "none";
-        rowElem.innerHTML = `<p class="error">Error during loading. Please try again later.</p>`;
+        rowElem.innerHTML = `<p class="error">Errore durante il caricamento. Riprova più tardi.</p>`;
     });
 
 
