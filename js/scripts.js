@@ -29,12 +29,7 @@ const printImages = () => {
     allImages.forEach((img) => {
         img.addEventListener("click", (event) => {
             const imgSrc = event.target.src;
-            const imgAlt = event.target.alt;
-            console.log(event)
-            console.log(event.target)
-            console.log(event.target.src)
-            console.log(event.target.alt);
-            
+            const imgAlt = event.target.alt;  
             overlayImgElem.src = imgSrc
             overlayImgElem.alt = imgAlt
             overlayElem.classList.remove("hidden");
