@@ -1,10 +1,7 @@
-// BIND
+// BIND & DATA
 const $one = document.querySelector.bind(document);
-
-// DATA
-const rowElem = $one(".row")
+const rowElem = $one(".row");
 const loadingElem = $one(".loading");
-const closeBtn = $one(".close-btn");
 const overlayElem = $one(".overlay");
 const overlayImgElem = $one(".overlay-image");
 
@@ -14,17 +11,17 @@ let images = [];
 // LOADING
 loadingElem.style.display = "block";
 
-// AXIOS FETCH
-axios.get("https://jsonplaceholder.typicode.com/photos?_limit=6")
-    .then(resp => {
-        images = resp.data; 
-        printImages();
-    })
-    .catch(error => {
-        console.error("Errore:", error);
-        loadingElem.style.display = "none";
-        rowElem.innerHTML = `<p class="error">Errore durante il caricamento. Riprova più tardi.</p>`;
-    });
+// SHOW OVERLAY
+const showOverlay = (src, alt) => {
+    overlayImgElem.src = src;
+    overlayImgElem.alt = alt;
+    overlayElem.classList.remove("hidden");
+}
+
+// CLOSE OVERLAY
+const closeOverlay = () => {
+    overlayElem.classList.add("hidden");
+}
 
 // PRINT IMAGES
 const printImages = () => {
@@ -38,37 +35,40 @@ const printImages = () => {
                 ${curImage.title}
             </p>     
         </div>
-    `
+    `;
     })
     rowElem.innerHTML = result;
-    loadingElem.style.display = "none"
+    loadingElem.style.display = "none";
     
     // OVERLAY IMAGE SELECTION
     const allImages = document.querySelectorAll(".main-img");
     allImages.forEach((img) => {
         img.addEventListener("click", (event) => {
-            const imgSrc = event.target.src;
-            const imgAlt = event.target.alt;  
-            overlayImgElem.src = imgSrc
-            overlayImgElem.alt = imgAlt
-            overlayElem.classList.remove("hidden");
-        }) 
-    })
+            showOverlay(event.target.src, event.target.alt);
+        });
+    });
 }
 
-// CLOSE OVERLAY
+// OVERLAY CLICK
 overlayElem.addEventListener("click", (event) => {
     if (event.target === overlayImgElem) {
         event.stopPropagation(); 
     } else {
-        overlayElem.classList.add("hidden"); 
+        closeOverlay();
     }
 });
 
-// CLOSE BUTTON
-closeBtn.addEventListener("click", () => {
-    overlayElem.classList.add("hidden");
-})
+// AXIOS FETCH
+axios.get("https://jsonplaceholder.typicode.com/photos?_limit=6")
+    .then(resp => {
+        images = resp.data; 
+        printImages();
+    })
+    .catch(error => {
+        console.error("Errore:", error);
+        loadingElem.style.display = "none";
+        rowElem.innerHTML = `<p class="error">Errore durante il caricamento. Riprova più tardi.</p>`;
+    });
 
 
 
